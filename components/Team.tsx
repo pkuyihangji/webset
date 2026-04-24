@@ -1,6 +1,6 @@
 const members = [
-  { name: "Jerry Li", role: "Founder & Portfolio Manager", bio: "NYU Economics & CS · 5+ years crypto trading · $5–10M AUM on HFT proprietary strategy" },
-  { name: "Team", role: "6-Person Team", bio: "Wall Street & Asia backgrounds · 30+ years combined experience in quantitative trading" },
+  { name: "Jerry Li", role: "Founder & Portfolio Manager", bio: "NYU Economics & CS · 5+ years crypto trading · $5–10M AUM on HFT market-making strategy (live since 2024)" },
+  { name: "Team", role: "6-Person Team", bio: "Wall Street & Asia backgrounds · 30+ years combined experience · Cross-sectional long-short strategy live since June 2025" },
 ];
 
 export default function Team() {

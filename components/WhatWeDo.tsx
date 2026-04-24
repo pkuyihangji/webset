@@ -1,8 +1,8 @@
 const items = [
-  { icon: "📊", title: "200–300 Assets", desc: "Trade crypto perpetual futures across the broadest liquid universe" },
+  { icon: "📊", title: "Cross-Sectional L/S", desc: "Trade 200–300 crypto perpetual futures. Live since June 2025." },
+  { icon: "⚡", title: "HFT Market Making", desc: "Proprietary high-frequency market-making strategy. $5–10M AUM, live since 2024." },
   { icon: "🤖", title: "AI-Powered Alpha", desc: "Statistics, ML, DL and AI models predict future cross-sectional returns" },
-  { icon: "⚖️", title: "Market Neutral", desc: "Long strongest, short weakest — zero directional exposure" },
-  { icon: "🛡️", title: "Risk Controls", desc: "Max 5% per asset, liquidity constraints, controlled drawdowns" },
+  { icon: "⚖️", title: "Market Neutral", desc: "Long strongest, short weakest — zero directional exposure, limited beta" },
 ];
 
 export default function WhatWeDo() {
