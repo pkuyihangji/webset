@@ -12,9 +12,9 @@ export default function Hero() {
         <p className="text-cyan-500 text-xs tracking-[0.3em] uppercase mb-6">Quantitative Crypto Trading</p>
         <h1 className="text-6xl md:text-8xl font-semibold text-white leading-none tracking-tight mb-6">
           Systematic<br />
-          <span className="text-white/20">Alpha.</span>
+          <span className="text-white/50">Alpha.</span>
         </h1>
-        <p className="text-white/40 text-lg max-w-md mb-16 leading-relaxed">
+        <p className="text-white/60 text-lg max-w-md mb-16 leading-relaxed">
           Market-neutral strategies across 200+ crypto perpetuals. Fully systematic. Zero directional exposure.
         </p>
       </div>
@@ -23,7 +23,7 @@ export default function Hero() {
           <div key={s.label} className="bg-[#080c14] px-8 py-8">
             <div className="font-mono text-3xl text-white mb-1">{s.value}</div>
             <div className="text-white/30 text-xs tracking-widest uppercase mb-1">{s.label}</div>
-            <div className="text-white/20 text-xs">{s.sub}</div>
+            <div className="text-white/50 text-xs">{s.sub}</div>
           </div>
         ))}
       </div>

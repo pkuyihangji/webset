@@ -24,7 +24,7 @@ export default function Team() {
             </div>
             <h3 className="text-white font-medium text-lg mb-1">{m.name}</h3>
             <p className="text-cyan-500/60 text-xs tracking-widest uppercase mb-4">{m.role}</p>
-            <p className="text-white/30 text-sm leading-relaxed">{m.bio}</p>
+            <p className="text-white/50 text-sm leading-relaxed">{m.bio}</p>
           </div>
         ))}
       </div>

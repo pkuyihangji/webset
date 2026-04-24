@@ -15,7 +15,7 @@ export default function WhatWeDo() {
           <div key={item.label} className="bg-[#080c14] p-10 hover:bg-white/[0.02] transition-colors">
             <div className="text-white/15 font-mono text-xs mb-6">{item.label}</div>
             <h3 className="text-white font-medium text-lg mb-3">{item.title}</h3>
-            <p className="text-white/40 text-sm leading-relaxed">{item.desc}</p>
+            <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </div>

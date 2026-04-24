@@ -9,7 +9,7 @@ export default function ExchangePresence() {
     <section id="exchanges" className="py-32 px-8 max-w-7xl mx-auto">
       <p className="text-cyan-500 text-xs tracking-[0.3em] uppercase mb-4">Exchanges</p>
       <h2 className="text-4xl font-semibold text-white mb-4">Live on Major Venues</h2>
-      <p className="text-white/30 text-sm mb-16 max-w-lg">Verified performance across major exchanges. Click to view public data.</p>
+      <p className="text-white/50 text-sm mb-16 max-w-lg">Verified performance across major exchanges. Click to view public data.</p>
       <div className="grid md:grid-cols-3 gap-px bg-white/5">
         {exchanges.map((ex) => (
           <div key={ex.name} className="bg-[#080c14] p-10 hover:bg-white/[0.02] transition-colors">
