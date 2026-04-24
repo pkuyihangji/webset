@@ -1,27 +1,39 @@
 export default function Hero() {
   const stats = [
-    { label: "APR", value: "67%" },
-    { label: "Sharpe Ratio", value: "2.93" },
-    { label: "Max Drawdown", value: "-10.07%" },
-    { label: "Capacity", value: "~$100M" },
+    { label: "Annual Return", value: "67%", sub: "since Jun 2025" },
+    { label: "Sharpe Ratio", value: "2.93", sub: "risk-adjusted" },
+    { label: "Max Drawdown", value: "10.07%", sub: "controlled" },
+    { label: "Capacity", value: "$100M", sub: "cross-sectional" },
   ];
 
   return (
-    <section id="overview" className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
-      <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-4">AI-Driven Quantitative Crypto Trading</p>
-      <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">Positive Research</h1>
-      <p className="text-xl text-gray-400 mb-12 max-w-xl">Market-Neutral · Scalable · Systematic Alpha</p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+    <section id="overview" className="min-h-screen flex flex-col justify-center px-8 pt-24 max-w-7xl mx-auto">
+      <div className="fade-up">
+        <p className="text-cyan-500 text-xs tracking-[0.3em] uppercase mb-6">Quantitative Crypto Trading</p>
+        <h1 className="text-6xl md:text-8xl font-semibold text-white leading-none tracking-tight mb-6">
+          Systematic<br />
+          <span className="text-white/20">Alpha.</span>
+        </h1>
+        <p className="text-white/40 text-lg max-w-md mb-16 leading-relaxed">
+          Market-neutral strategies across 200+ crypto perpetuals. Fully systematic. Zero directional exposure.
+        </p>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/5">
         {stats.map((s) => (
-          <div key={s.label} className="bg-gray-900 border border-gray-800 rounded-xl px-6 py-5">
-            <div className="text-3xl font-bold text-amber-400">{s.value}</div>
-            <div className="text-gray-400 text-sm mt-1">{s.label}</div>
+          <div key={s.label} className="bg-[#080c14] px-8 py-8">
+            <div className="font-mono text-3xl text-white mb-1">{s.value}</div>
+            <div className="text-white/30 text-xs tracking-widest uppercase mb-1">{s.label}</div>
+            <div className="text-white/20 text-xs">{s.sub}</div>
           </div>
         ))}
       </div>
-      <div className="flex gap-4">
-        <a href="#strategy" className="bg-amber-400 text-gray-950 font-semibold px-6 py-3 rounded-lg hover:bg-amber-300 transition-colors">Learn More</a>
-        <a href="#contact" className="border border-gray-600 text-white px-6 py-3 rounded-lg hover:border-gray-400 transition-colors">Contact Us</a>
+      <div className="mt-12 flex gap-6">
+        <a href="#strategy" className="text-xs tracking-widest uppercase text-white/60 hover:text-white transition-colors border-b border-white/20 hover:border-white pb-1">
+          Learn More
+        </a>
+        <a href="#contact" className="text-xs tracking-widest uppercase text-cyan-500 hover:text-cyan-400 transition-colors border-b border-cyan-500/40 hover:border-cyan-400 pb-1">
+          Get in Touch
+        </a>
       </div>
     </section>
   );

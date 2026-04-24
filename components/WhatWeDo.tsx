@@ -1,21 +1,21 @@
 const items = [
-  { icon: "📊", title: "Cross-Sectional L/S", desc: "Trade 200–300 crypto perpetual futures. Live since June 2025." },
-  { icon: "⚡", title: "HFT Market Making", desc: "Proprietary high-frequency market-making strategy. $5–10M AUM, live since 2024." },
-  { icon: "🤖", title: "AI-Powered Alpha", desc: "Statistics, ML, DL and AI models predict future cross-sectional returns" },
-  { icon: "⚖️", title: "Market Neutral", desc: "Long strongest, short weakest — zero directional exposure, limited beta" },
+  { label: "01", title: "Cross-Sectional L/S", desc: "200–300 crypto perpetual futures. Long strongest, short weakest. Live since June 2025." },
+  { label: "02", title: "HFT Market Making", desc: "Proprietary high-frequency market-making. $5–10M AUM, live since 2024." },
+  { label: "03", title: "AI-Powered Signals", desc: "Statistics, ML, DL and AI models predict future cross-sectional returns." },
+  { label: "04", title: "Risk Architecture", desc: "Max 5% per asset. Liquidity constraints. Controlled drawdowns across all regimes." },
 ];
 
 export default function WhatWeDo() {
   return (
-    <section id="strategy" className="py-24 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold text-white mb-2">What We Do</h2>
-      <p className="text-gray-400 mb-12">A fully systematic, market-neutral long-short strategy on crypto perpetuals.</p>
-      <div className="grid md:grid-cols-2 gap-6">
+    <section id="strategy" className="py-32 px-8 max-w-7xl mx-auto">
+      <p className="text-cyan-500 text-xs tracking-[0.3em] uppercase mb-4">Strategy</p>
+      <h2 className="text-4xl font-semibold text-white mb-16">What We Do</h2>
+      <div className="grid md:grid-cols-2 gap-px bg-white/5">
         {items.map((item) => (
-          <div key={item.title} className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-            <div className="text-3xl mb-3">{item.icon}</div>
-            <h3 className="text-white font-semibold text-lg mb-2">{item.title}</h3>
-            <p className="text-gray-400 text-sm">{item.desc}</p>
+          <div key={item.label} className="bg-[#080c14] p-10 hover:bg-white/[0.02] transition-colors">
+            <div className="text-white/15 font-mono text-xs mb-6">{item.label}</div>
+            <h3 className="text-white font-medium text-lg mb-3">{item.title}</h3>
+            <p className="text-white/40 text-sm leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </div>

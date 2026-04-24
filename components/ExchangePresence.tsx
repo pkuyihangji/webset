@@ -6,25 +6,26 @@ const exchanges = [
 
 export default function ExchangePresence() {
   return (
-    <section id="exchanges" className="py-24 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold text-white mb-2">Exchange Presence</h2>
-      <p className="text-gray-400 mb-10">Verified performance across major exchanges — click to view public data.</p>
-      <div className="grid md:grid-cols-3 gap-6">
+    <section id="exchanges" className="py-32 px-8 max-w-7xl mx-auto">
+      <p className="text-cyan-500 text-xs tracking-[0.3em] uppercase mb-4">Exchanges</p>
+      <h2 className="text-4xl font-semibold text-white mb-4">Live on Major Venues</h2>
+      <p className="text-white/30 text-sm mb-16 max-w-lg">Verified performance across major exchanges. Click to view public data.</p>
+      <div className="grid md:grid-cols-3 gap-px bg-white/5">
         {exchanges.map((ex) => (
-          <div key={ex.name} className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-            <h3 className="text-white font-semibold text-lg mb-4">{ex.name}</h3>
-            <div className="space-y-2 text-sm mb-6">
-              <div className="flex justify-between">
-                <span className="text-gray-400">Strategy AUM</span>
-                <span className="text-white">{ex.aum}</span>
+          <div key={ex.name} className="bg-[#080c14] p-10 hover:bg-white/[0.02] transition-colors">
+            <h3 className="text-white font-medium text-lg mb-8">{ex.name}</h3>
+            <div className="space-y-4 mb-10">
+              <div className="flex justify-between items-baseline">
+                <span className="text-white/30 text-xs tracking-widest uppercase">AUM</span>
+                <span className="font-mono text-white text-sm">{ex.aum}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-400">Monthly Return</span>
-                <span className="text-amber-400">{ex.monthly}</span>
+              <div className="flex justify-between items-baseline">
+                <span className="text-white/30 text-xs tracking-widest uppercase">Monthly</span>
+                <span className="font-mono text-cyan-400 text-sm">{ex.monthly}</span>
               </div>
             </div>
             <a href={ex.link} target="_blank" rel="noopener noreferrer"
-              className="block text-center border border-gray-600 text-gray-300 text-sm py-2 rounded-lg hover:border-amber-400 hover:text-amber-400 transition-colors">
+              className="text-xs tracking-widest uppercase text-white/30 hover:text-cyan-400 transition-colors border-b border-white/10 hover:border-cyan-400/40 pb-1">
               View Public Data →
             </a>
           </div>
