@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section id="overview" className="min-h-screen flex flex-col justify-center px-8 pt-24 max-w-7xl mx-auto">
       <div className="fade-up">
-        <p className="text-cyan-500 text-xs tracking-[0.3em] uppercase mb-6">Quantitative Crypto Trading</p>
+        <p className="text-amber-400 text-xs tracking-[0.3em] uppercase mb-6">Quantitative Crypto Trading</p>
         <h1 className="text-6xl md:text-8xl font-semibold text-white leading-none tracking-tight mb-6">
           Systematic<br />
           <span className="text-white/50">Alpha.</span>
@@ -31,7 +31,7 @@ export default function Hero() {
         <a href="#strategy" className="text-xs tracking-widest uppercase text-white/60 hover:text-white transition-colors border-b border-white/20 hover:border-white pb-1">
           Learn More
         </a>
-        <a href="#contact" className="text-xs tracking-widest uppercase text-cyan-500 hover:text-cyan-400 transition-colors border-b border-cyan-500/40 hover:border-cyan-400 pb-1">
+        <a href="#contact" className="text-xs tracking-widest uppercase text-amber-400 hover:text-amber-300 transition-colors border-b border-amber-400/40 hover:border-amber-300 pb-1">
           Get in Touch
         </a>
       </div>

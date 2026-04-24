@@ -8,7 +8,7 @@ const items = [
 export default function WhatWeDo() {
   return (
     <section id="strategy" className="py-32 px-8 max-w-7xl mx-auto">
-      <p className="text-cyan-500 text-xs tracking-[0.3em] uppercase mb-4">Strategy</p>
+      <p className="text-amber-400 text-xs tracking-[0.3em] uppercase mb-4">Strategy</p>
       <h2 className="text-4xl font-semibold text-white mb-16">What We Do</h2>
       <div className="grid md:grid-cols-2 gap-px bg-white/5">
         {items.map((item) => (

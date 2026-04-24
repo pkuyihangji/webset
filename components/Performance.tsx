@@ -16,7 +16,7 @@ const metrics = [
 export default function Performance() {
   return (
     <section id="performance" className="py-32 px-8 max-w-7xl mx-auto">
-      <p className="text-cyan-500 text-xs tracking-[0.3em] uppercase mb-4">Performance</p>
+      <p className="text-amber-400 text-xs tracking-[0.3em] uppercase mb-4">Performance</p>
       <h2 className="text-4xl font-semibold text-white mb-16">Consistent Returns</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 mb-px">
         {metrics.map((m) => (
@@ -33,7 +33,7 @@ export default function Performance() {
             <XAxis dataKey="month" stroke="transparent" tick={{ fill: "#ffffff20", fontSize: 10 }} />
             <YAxis stroke="transparent" tick={{ fill: "#ffffff20", fontSize: 10 }} />
             <Tooltip contentStyle={{ background: "#0d1220", border: "1px solid #ffffff10", color: "#e8edf5", fontSize: 12 }} />
-            <Line type="monotone" dataKey="nav" stroke="#06b6d4" strokeWidth={1.5} dot={false} />
+            <Line type="monotone" dataKey="nav" stroke="#fbbf24" strokeWidth={1.5} dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </div>
