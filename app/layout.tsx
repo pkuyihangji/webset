@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Positive Research Ltd. — Market-Neutral Crypto Alpha",
-  description: "AI-driven quantitative crypto trading firm. Market-neutral long-short strategy with 67% APR and 2.93 Sharpe ratio.",
+  title: "Positive Research Ltd. | High Frequency Alpha Long Short",
+  description: "AI-driven quantitative crypto trading. Market-neutral, scalable and systematic alpha through the Jemma V1 high-frequency long-short strategy.",
 };
 
 export default function RootLayout({
