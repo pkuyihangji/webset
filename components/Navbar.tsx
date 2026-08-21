@@ -1,29 +1,66 @@
 "use client";
-import { useState, useEffect } from "react";
 
-const links = ["Overview", "Strategy", "Performance", "Exchanges", "Team", "Contact"];
+import { useEffect, useState } from "react";
+
+const links = [
+  { label: "Model", href: "#model" },
+  { label: "Performance", href: "#performance" },
+  { label: "Research", href: "#research" },
+  { label: "Team", href: "#team" },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-[#080c14]/95 backdrop-blur border-b border-white/5" : "bg-transparent"}`}>
-      <div className="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
-        <span className="text-white font-semibold tracking-widest text-sm uppercase">Positive Research</span>
-        <div className="hidden md:flex gap-8">
-          {links.map((l) => (
-            <a key={l} href={`#${l.toLowerCase()}`} className="text-white/40 hover:text-white text-xs tracking-widest uppercase transition-colors">
-              {l}
+    <nav className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${scrolled || open ? "border-white/10 bg-[#080b0a]/95 backdrop-blur" : "border-transparent bg-transparent"}`}>
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
+        <a href="#overview" className="flex items-center gap-3 text-sm font-semibold text-white" aria-label="Positive Research home">
+          <span className="grid h-8 w-8 place-items-center border border-[#b7ff6a] text-xs text-[#b7ff6a]">PR</span>
+          <span>POSITIVE RESEARCH</span>
+        </a>
+        <div className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="text-xs font-medium uppercase text-[#9aa39d] transition-colors hover:text-white">
+              {link.label}
             </a>
           ))}
+          <a href="#contact" className="border border-white/25 px-4 py-2 text-xs font-semibold uppercase text-white transition-colors hover:border-[#b7ff6a] hover:text-[#b7ff6a]">
+            Contact
+          </a>
         </div>
+        <button
+          type="button"
+          className="grid h-10 w-10 place-items-center border border-white/20 md:hidden"
+          onClick={() => setOpen((value) => !value)}
+          aria-expanded={open}
+          aria-label="Toggle navigation"
+        >
+          <span className="flex w-4 flex-col gap-1">
+            <span className="h-px w-full bg-white" />
+            <span className="h-px w-full bg-white" />
+          </span>
+        </button>
       </div>
+      {open && (
+        <div className="border-t border-white/10 bg-[#080b0a] px-5 py-5 md:hidden">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="block border-b border-white/10 py-4 text-sm text-white">
+              {link.label}
+            </a>
+          ))}
+          <a href="#contact" onClick={() => setOpen(false)} className="mt-5 block bg-[#b7ff6a] px-4 py-3 text-center text-sm font-semibold text-[#080b0a]">
+            Contact
+          </a>
+        </div>
+      )}
     </nav>
   );
 }
