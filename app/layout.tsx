@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Positive Research Ltd. | High Frequency Alpha Long Short",
-  description: "AI-driven quantitative crypto trading. Market-neutral, scalable and systematic alpha through the Jemma V1 high-frequency long-short strategy.",
+  description: "AI-driven quantitative crypto trading firm. Market-neutral, scalable and systematic alpha.",
 };
 
 export default function RootLayout({

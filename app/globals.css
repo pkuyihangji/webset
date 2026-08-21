@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #080b0a;
-  --foreground: #f7f8f3;
+  --background: #07111a;
+  --foreground: #f7fafc;
 }
 
 * {
@@ -33,8 +33,8 @@ button {
 }
 
 ::selection {
-  background: #b7ff6a;
-  color: #080b0a;
+  background: #0f67a5;
+  color: #ffffff;
 }
 
 .section-kicker {
@@ -42,4 +42,11 @@ button {
   font-weight: 700;
   line-height: 1rem;
   text-transform: uppercase;
+}
+
+.data-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
 }

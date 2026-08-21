@@ -1,114 +1,82 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
-import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { CapacityKey, capacityProfiles, defaultCapacity, navData } from "@/lib/jemmaModel";
-
-const chartColors: Record<CapacityKey, string> = {
-  "10k": "#72d5c8",
-  "33k": "#7ed9ad",
-  "100k": "#98e58d",
-  "333k": "#a9ef79",
-  "1m": "#b7ff6a",
-};
+import { PerformanceKey, performanceViews, strategies } from "@/lib/publicDeck";
 
 export default function Performance() {
-  const [selected, setSelected] = useState<CapacityKey>(defaultCapacity);
-  const profile = capacityProfiles.find((item) => item.key === selected) ?? capacityProfiles[4];
+  const [selected, setSelected] = useState<PerformanceKey>("hft");
+  const view = performanceViews.find((item) => item.key === selected) ?? performanceViews[0];
 
   return (
-    <section id="performance" className="bg-[#080b0a] text-white">
+    <section id="performance" className="bg-[#07111a] text-white">
       <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <div>
-            <p className="section-kicker text-[#b7ff6a]">02 / Performance</p>
-            <h2 className="mt-5 max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">One signal. Five liquidity constraints.</h2>
+            <p className="section-kicker text-[#58b6e7]">02 / Performance</p>
+            <h2 className="mt-5 max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">Three profiles for different return and capacity objectives.</h2>
           </div>
-          <p className="max-w-md text-sm leading-7 text-[#929b95]">
-            Normalized simple NAV, post-fee and post-funding. Select a per-symbol dollar cap to see how the model scales.
+          <p className="max-w-md text-sm leading-7 text-[#9cacba]">
+            HFT, mid-frequency and lower-volatility implementations are designed to remain stable across market regimes.
           </p>
         </div>
 
-        <div className="mt-12 flex max-w-xl border border-white/15 p-1" role="group" aria-label="Dollar cap">
-          {capacityProfiles.map((item) => (
+        <div className="mt-12 grid gap-px border border-white/15 bg-white/15 lg:grid-cols-3">
+          {strategies.map((strategy) => (
+            <article key={strategy.key} className="bg-[#0b1823] p-6 sm:p-7">
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-xl font-semibold">{strategy.name}</h3>
+                <span className="text-xs font-semibold uppercase text-[#58b6e7]">{strategy.key === "low-vol" ? "Low Vol" : strategy.key.toUpperCase()}</span>
+              </div>
+              <div className="mt-8 grid grid-cols-3 gap-3 border-y border-white/10 py-5">
+                <div><p className="text-xl font-semibold">{strategy.apr}</p><p className="mt-1 text-[10px] uppercase text-[#8193a2]">APR</p></div>
+                <div><p className="text-xl font-semibold">{strategy.sharpe}</p><p className="mt-1 text-[10px] uppercase text-[#8193a2]">Sharpe</p></div>
+                <div><p className="text-xl font-semibold">{strategy.drawdown}</p><p className="mt-1 text-[10px] uppercase text-[#8193a2]">Max DD</p></div>
+              </div>
+              <dl className="mt-5 space-y-3 text-xs">
+                <div className="flex justify-between gap-4"><dt className="text-[#8193a2]">Average daily turnover</dt><dd className="font-semibold">{strategy.turnover}</dd></div>
+                <div className="flex justify-between gap-4"><dt className="text-[#8193a2]">Binance capacity</dt><dd className="font-semibold">{strategy.binanceCapacity}</dd></div>
+                <div className="flex justify-between gap-4"><dt className="text-[#8193a2]">All-exchange capacity</dt><dd className="font-semibold text-[#58b6e7]">{strategy.totalCapacity}</dd></div>
+              </dl>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-16 flex max-w-2xl border border-white/15 p-1" role="group" aria-label="Performance view">
+          {performanceViews.map((item) => (
             <button
               key={item.key}
               type="button"
+              aria-pressed={selected === item.key}
               onClick={() => setSelected(item.key)}
-              className={`min-w-0 flex-1 px-2 py-2.5 text-xs font-semibold transition-colors ${selected === item.key ? "bg-[#b7ff6a] text-[#080b0a]" : "text-[#929b95] hover:text-white"}`}
+              className={`min-w-0 flex-1 px-2 py-2.5 text-xs font-semibold transition-colors ${selected === item.key ? "bg-[#58b6e7] text-[#07111a]" : "text-[#93a4b2] hover:text-white"}`}
             >
-              {item.cap}
+              {item.label}
             </button>
           ))}
         </div>
 
-        <div className="mt-8 grid grid-cols-2 border-y border-white/15 lg:grid-cols-6">
-          {[
-            ["Avg GMV", profile.gmv],
-            ["Annual return", profile.annualReturn],
-            ["Sharpe", profile.sharpe],
-            ["Calmar", profile.calmar],
-            ["Max drawdown", profile.maxDrawdown],
-            ["Active symbols", profile.activeSymbols],
-          ].map(([label, value], index) => (
-            <div key={label} className={`py-5 ${index % 2 ? "pl-4" : "pr-4"} lg:border-l lg:border-white/15 lg:px-5 first:lg:border-l-0 first:lg:pl-0`}>
-              <div className="text-xl font-semibold sm:text-2xl">{value}</div>
-              <div className="mt-1 text-[11px] uppercase text-[#78827b]">{label}</div>
-            </div>
-          ))}
-        </div>
+        <figure className="mt-6 border border-white/15 bg-[#f3f6fa] p-2 sm:p-4">
+          <div className="relative aspect-[1.51/1] w-full overflow-hidden">
+            <Image
+              key={view.image}
+              src={view.image}
+              alt={`${view.title} performance chart and metrics`}
+              fill
+              className="object-contain"
+              sizes="(max-width: 1280px) 100vw, 1180px"
+            />
+          </div>
+          <figcaption className="px-2 pb-2 pt-3 text-[11px] leading-5 text-[#526170] sm:px-3">
+            {view.title}. Performance information as presented in the Positive Research external presentation, August 2026.
+          </figcaption>
+        </figure>
 
-        <div className="mt-10 h-[360px] w-full sm:h-[480px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={navData} margin={{ top: 12, right: 12, bottom: 0, left: -12 }}>
-              <CartesianGrid stroke="#222824" strokeDasharray="2 8" vertical={false} />
-              <XAxis dataKey="date" stroke="#5f6962" tick={{ fill: "#89928c", fontSize: 11 }} tickLine={false} axisLine={false} minTickGap={48} />
-              <YAxis domain={[1, "auto"]} stroke="#5f6962" tick={{ fill: "#89928c", fontSize: 11 }} tickLine={false} axisLine={false} tickFormatter={(value) => `${Number(value).toFixed(1)}x`} />
-              <Tooltip
-                cursor={{ stroke: "#526058", strokeDasharray: "3 3" }}
-                contentStyle={{ background: "#111512", border: "1px solid #354039", borderRadius: 0, color: "#fff" }}
-                labelStyle={{ color: "#98a39b", marginBottom: 6 }}
-                formatter={(value) => [`${Number(value).toFixed(3)}x`, "Normalized NAV"]}
-              />
-              <Area type="monotone" dataKey={selected} stroke={chartColors[selected]} strokeWidth={2.5} fill={chartColors[selected]} fillOpacity={0.08} dot={false} isAnimationActive={false} />
-            </AreaChart>
-          </ResponsiveContainer>
+        <div className="mt-10 grid gap-6 border-t border-white/15 pt-7 text-sm leading-7 text-[#9cacba] sm:grid-cols-3">
+          <p><span className="block text-xs font-semibold uppercase text-white">Market regimes</span>Stable across market regimes.</p>
+          <p><span className="block text-xs font-semibold uppercase text-white">Live trading</span>Live trading since 14 June 2025.</p>
+          <p><span className="block text-xs font-semibold uppercase text-white">Execution cost</span>2.4 bps one-way in the presented performance.</p>
         </div>
-
-        <div id="capacity" className="mt-16 overflow-x-auto border-t border-white/15">
-          <table className="w-full min-w-[760px] border-collapse text-left">
-            <thead>
-              <tr className="text-[11px] uppercase text-[#6f7972]">
-                <th className="py-4 pr-4 font-medium">Single-name cap</th>
-                <th className="px-4 py-4 font-medium">Average GMV</th>
-                <th className="px-4 py-4 font-medium">Model AUM</th>
-                <th className="px-4 py-4 font-medium">Annual return</th>
-                <th className="px-4 py-4 font-medium">Sharpe</th>
-                <th className="px-4 py-4 font-medium">Turnover</th>
-              </tr>
-            </thead>
-            <tbody>
-              {capacityProfiles.map((item) => (
-                <tr
-                  key={item.key}
-                  onClick={() => setSelected(item.key)}
-                  className={`cursor-pointer border-t border-white/10 text-sm transition-colors ${selected === item.key ? "bg-white/[0.06] text-white" : "text-[#a4ada7] hover:bg-white/[0.03]"}`}
-                >
-                  <td className="py-5 pr-4 font-semibold text-white">{item.cap}</td>
-                  <td className="px-4 py-5">{item.gmv}</td>
-                  <td className="px-4 py-5">{item.modelAum}</td>
-                  <td className="px-4 py-5">{item.annualReturn}</td>
-                  <td className="px-4 py-5">{item.sharpe}</td>
-                  <td className="px-4 py-5">{item.turnover}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <p className="mt-6 max-w-3xl text-[11px] leading-5 text-[#68716b]">
-          Source: Jemma Final V1 dollar-bound neutral backtest, 4h sleeve, 866 days from 01 Mar 2024 to 14 Jul 2026. Returns are simple, not compounded. Model AUM is the capital base implied by the report, not current firm assets under management.
-        </p>
       </div>
     </section>
   );

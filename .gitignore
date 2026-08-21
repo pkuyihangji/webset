@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local source material and agent state
+/.codex
+/Positive_Research_Deck_HFT_EN_0807.pptx
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
