@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const stats = [
   { label: "APR", value: ">120%" },
   { label: "Sharpe", value: ">5" },
@@ -10,19 +8,10 @@ const stats = [
 export default function Hero() {
   return (
     <section id="overview" className="relative min-h-[92svh] overflow-hidden bg-[#07111a] pt-20 sm:pt-24">
-      <Image
-        src="/hft-performance.png"
-        alt=""
-        fill
-        priority
-        className="object-cover object-center opacity-[0.13]"
-        sizes="100vw"
-      />
-      <div className="data-grid pointer-events-none absolute inset-0 opacity-35" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-0 bg-[#07111a]/65" aria-hidden="true" />
-      <div className="pointer-events-none absolute right-[-7rem] top-28 hidden h-[34rem] w-[34rem] overflow-hidden border border-white/10 bg-white lg:block" aria-hidden="true">
-        <Image src="/positive-research-logo.png" alt="" fill className="object-cover opacity-[0.09]" sizes="544px" />
-      </div>
+      <div className="pointer-events-none absolute inset-y-0 left-[12%] w-px bg-white/[0.04]" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px bg-white/[0.04]" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-y-0 right-[12%] w-px bg-white/[0.04]" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-x-0 top-[38%] h-px bg-white/[0.04]" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(92svh-5rem)] max-w-7xl flex-col justify-between px-5 pb-7 sm:min-h-[calc(92svh-6rem)] sm:px-8 sm:pb-9 lg:px-12">
         <div className="max-w-4xl pt-7 sm:pt-20">
@@ -51,7 +40,7 @@ export default function Hero() {
         </div>
 
         <div>
-          <div className="mt-8 border-y border-white/15 bg-[#07111a]/80 sm:mt-14">
+          <div className="mt-8 border-y border-white/15 bg-[#07111a] sm:mt-14">
             <div className="grid grid-cols-2 lg:grid-cols-4">
               {stats.map((stat, index) => (
                 <div key={stat.label} className={`min-w-0 py-3 pr-3 sm:py-5 ${index % 2 ? "pl-3" : ""} ${index > 0 ? "lg:border-l lg:border-white/15 lg:pl-6" : ""}`}>
