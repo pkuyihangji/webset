@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #07111a;
-  --foreground: #f7fafc;
+  --background: #f3f5f2;
+  --foreground: #0a0d0c;
+  --acid: #d7ff43;
+  --blue: #315efb;
+  --mint: #00a88f;
 }
 
 * {
@@ -18,7 +21,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0;
 }
@@ -33,13 +36,41 @@ button {
 }
 
 ::selection {
-  background: #0f67a5;
-  color: #ffffff;
+  background: var(--acid);
+  color: #0a0d0c;
 }
 
 .section-kicker {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.6875rem;
   font-weight: 700;
   line-height: 1rem;
   text-transform: uppercase;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@keyframes signal-in {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.signal-cell {
+  animation: signal-in 600ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .signal-cell {
+    animation: none;
+  }
 }
