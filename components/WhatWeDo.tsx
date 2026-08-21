@@ -1,8 +1,28 @@
 const stages = [
-  ["01", "Trade", "Trade 200-300 crypto perpetual futures across a broad and expanding opportunity set.", "200-300 PERPETUALS"],
-  ["02", "Predict", "Use statistics, machine learning, deep learning and AI approaches to predict future returns.", "AI / ML / DL / STATISTICS"],
-  ["03", "Construct", "Construct portfolios through optimisation, going long the strongest and short the weakest assets.", "PORTFOLIO OPTIMISATION"],
-  ["04", "Neutralise", "Maintain a fully market-neutral portfolio with zero directional exposure and limited beta exposure.", "MARKET-NEUTRAL"],
+  {
+    number: "01",
+    title: "Trade",
+    text: "Trade 200-300 crypto perpetual futures across a broad and expanding opportunity set.",
+    detail: "200-300 perpetuals",
+  },
+  {
+    number: "02",
+    title: "Predict",
+    text: "Use statistics, machine learning, deep learning and AI approaches to predict future returns.",
+    detail: "Systematic alpha pipeline",
+  },
+  {
+    number: "03",
+    title: "Construct",
+    text: "Construct portfolios through optimisation, going long the strongest and short the weakest assets.",
+    detail: "Portfolio optimisation",
+  },
+  {
+    number: "04",
+    title: "Neutralise",
+    text: "Maintain a fully market-neutral portfolio with zero directional exposure and limited beta exposure.",
+    detail: "Market-neutral",
+  },
 ];
 
 const thesis = [
@@ -13,54 +33,47 @@ const thesis = [
 ];
 
 const opportunity = [
+  "300+ tradable assets",
   "Increasing liquidity",
   "Early institutional stage",
   "Expanding opportunity set",
-  "Fragmented liquidity",
 ];
 
 export default function WhatWeDo() {
   return (
-    <section id="strategy" className="bg-white text-black">
-      <div className="mx-auto max-w-[1440px] px-5 py-24 sm:px-8 lg:px-12 lg:py-36">
-        <div className="grid gap-12 border-t border-black pt-6 lg:grid-cols-[0.28fr_0.72fr]">
+    <section id="strategy" className="bg-[#f4f7fa] text-[#101923]">
+      <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div>
-            <p className="section-kicker">01 / Strategy</p>
+            <p className="section-kicker text-[#0f67a5]">01 / Investment thesis</p>
+            <h2 className="mt-5 max-w-md text-4xl font-semibold leading-tight sm:text-5xl">A systematic engine for cross-sectional crypto alpha.</h2>
           </div>
-          <div>
-            <h2 className="max-w-4xl text-4xl font-bold leading-[1.02] sm:text-6xl lg:text-7xl">
-              Systematic research, expressed through a neutral book.
-            </h2>
-            <div className="mt-12 grid gap-x-10 gap-y-4 border-t border-black/15 pt-6 sm:grid-cols-2">
-              {thesis.map((item, index) => (
-                <p key={item} className="mono flex gap-4 border-b border-black/10 pb-4 text-[11px] font-bold uppercase leading-5">
-                  <span className="text-[#315efb]">0{index + 1}</span><span>{item}</span>
-                </p>
-              ))}
-            </div>
+          <div className="grid gap-px border border-[#c5d0d9] bg-[#c5d0d9] sm:grid-cols-2 lg:mt-9">
+            {thesis.map((item) => (
+              <div key={item} className="bg-white p-5 text-sm font-semibold leading-6">{item}</div>
+            ))}
           </div>
         </div>
 
-        <div className="mt-24 border-t border-black">
-          {stages.map(([number, title, text, detail]) => (
-            <article key={number} className="grid gap-4 border-b border-black/15 py-7 sm:grid-cols-[0.12fr_0.23fr_0.45fr_0.2fr] sm:items-start">
-              <p className="mono text-[10px] font-bold text-[#315efb]">{number}</p>
-              <h3 className="text-2xl font-bold">{title}</h3>
-              <p className="max-w-xl text-sm leading-7 text-[#535b57]">{text}</p>
-              <p className="mono text-[10px] font-bold uppercase leading-5 text-[#737b77] sm:text-right">{detail}</p>
+        <div className="mt-20 grid border-t border-[#bdc8d1] sm:grid-cols-2 lg:grid-cols-4">
+          {stages.map((stage, index) => (
+            <article key={stage.number} className={`py-8 sm:px-7 ${index % 2 === 0 ? "sm:pl-0" : "sm:border-l sm:border-[#bdc8d1]"} ${index > 1 ? "sm:border-t lg:border-t-0" : ""} ${index > 0 ? "lg:border-l lg:border-[#bdc8d1] lg:pl-7" : ""}`}>
+              <p className="text-xs font-semibold text-[#0f67a5]">{stage.number}</p>
+              <h3 className="mt-8 text-2xl font-semibold">{stage.title}</h3>
+              <p className="mt-4 min-h-28 text-sm leading-7 text-[#526170]">{stage.text}</p>
+              <p className="mt-8 border-t border-[#cad4dc] pt-4 text-xs font-semibold uppercase text-[#101923]">{stage.detail}</p>
             </article>
           ))}
         </div>
 
-        <div className="mt-24 grid bg-[#d7ff43] text-black lg:grid-cols-[0.35fr_0.65fr]">
-          <div className="border-b border-black/20 p-7 lg:border-b-0 lg:border-r lg:p-10">
-            <p className="section-kicker">Why now</p>
-            <p className="mt-7 text-6xl font-black sm:text-7xl">300+</p>
-            <p className="mono mt-2 text-[10px] font-bold uppercase">Tradable assets</p>
+        <div className="mt-16 grid gap-8 border-t border-[#bdc8d1] pt-9 lg:grid-cols-[0.6fr_1.4fr]">
+          <div>
+            <p className="section-kicker text-[#0f67a5]">Why now</p>
+            <p className="mt-3 text-sm leading-7 text-[#526170]">A growing market creates a broader systematic opportunity set.</p>
           </div>
-          <div className="grid grid-cols-2">
-            {opportunity.map((item, index) => (
-              <p key={item} className={`flex min-h-28 items-end p-6 text-lg font-bold sm:min-h-36 sm:p-8 ${index % 2 ? "border-l border-black/20" : ""} ${index > 1 ? "border-t border-black/20" : ""}`}>{item}</p>
+          <div className="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+            {opportunity.map((item) => (
+              <p key={item} className="border-l-2 border-[#0f67a5] pl-4 text-sm font-semibold leading-6">{item}</p>
             ))}
           </div>
         </div>
