@@ -1,4 +1,5 @@
 import { performanceColumns, performanceRows } from "@/lib/publicDeck";
+import PerformanceChart from "@/components/PerformanceChart";
 
 export default function Performance() {
   return (
@@ -13,6 +14,8 @@ export default function Performance() {
             HFT, leveraged HFT, mid-frequency and lower-volatility implementations across return, risk, turnover and capacity.
           </p>
         </div>
+
+        <PerformanceChart />
 
         <div className="mt-12 overflow-x-auto border-y border-white/15">
           <table className="w-full min-w-[980px] border-collapse text-left">
